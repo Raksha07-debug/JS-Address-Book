@@ -38,6 +38,11 @@ class AddressBook{
     }
     addContact(contact){
         if(contact instanceof Contact){
+            
+            if (this.contacts.some(c => c.firstName === contact.firstName && c.lastName === contact.lastName)) {
+                console.log("Duplicate Contact! Cannot add.");
+                return;
+            }
             this.contacts.push(contact);
             console.log("Contact added successfully");
         }
@@ -94,6 +99,8 @@ let addressBook = new AddressBook();
 try{
     let contact1 = new Contact("Raksha", "Malviya", "Piplani", "Bhopal", "Madhya Pradesh", "400001", "9876543210", "rak07@example.com");
     let contact2 = new Contact("Nisha", "Kumari", "Piplani", "Bhopal", "Madhya Pradesh", "400001", "9876543210", "exa7654@example.com");
+    let contact3 = new Contact("Raksha", "Malviya", "Piplani", "Bhopal", "Madhya Pradesh", "400001", "9876543210", "rak07@example.com");
+
     addressBook.addContact(contact1);
     addressBook.addContact(contact2);
     addressBook.displayContacts();
