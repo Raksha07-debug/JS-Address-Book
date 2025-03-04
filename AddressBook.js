@@ -82,6 +82,9 @@ class AddressBook{
             console.log("Contact not found!");
         }
     }
+    countContacts() {
+        return this.contacts.reduce(count => count + 1, 0);
+    }
     displayContacts(){
         console.log("Address Book",this.contacts);
     }
@@ -95,11 +98,14 @@ try{
     addressBook.addContact(contact2);
     addressBook.displayContacts();
 
-    addressBook.displayContacts();
     addressBook.editContact("Raksha", { city: "Amsterdam" });
+     addressBook.displayContacts();
 
-    addressBook.displayContacts();
     addressBook.deleteContact("Nisha");
+    addressBook.displayContacts();
+
+    console.log("Total Contacts:", addressBook.countContacts());
+
 }catch(error){
     console.error(error.message);
 }
