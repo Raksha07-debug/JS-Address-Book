@@ -129,6 +129,8 @@ try{
     addressBook.deleteContact("Nisha");
     addressBook.displayContacts();
 
+    console.log("Searching by City Or State",addressBook.searchByCityOrState("Bhopal", "Madhya Pradesh"));
+
     console.log("Total Contacts:", addressBook.countContacts());
     addressBook.viewByCityOrState();
 
