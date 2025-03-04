@@ -32,9 +32,31 @@ class Contact {
         this.email = email;
     }
 }
+class AddressBook{
+    constructor(){
+        this.contacts = [];
+    }
+    addContact(contact){
+        if(contact instanceof Contact){
+            this.contacts.push(contact);
+            console.log("Contact added successfully");
+        }
+        else{
+            throw new error("Invalid Contact !")
+        }
+    }
+    displayContacts(){
+        console.log("Address Book",this.contacts);
+    }
+}
 
+let addressBook = new AddressBook();
 try{
-let contact1 = new Contact("Raksha", "Malviya", "Piplani", "Bhopal", "Madhya Pradesh", "400001", "7000961111", "Rak007@example.com");
+    let contact1 = new Contact("Raksha", "Malviya", "Piplani", "Bhopal", "Madhya Pradesh", "400001", "9876543210", "rak07@example.com");
+    let contact2 = new Contact("Nisha", "Kumari", "Piplani", "Bhopal", "Madhya Pradesh", "400001", "9876543210", "exa7654@example.com");
+    addressBook.addContact(contact1);
+    addressBook.addContact(contact2);
+    addressBook.displayContacts();
 }catch(error){
-console.log(error.message);
+    console.error(error.message);
 }
