@@ -90,6 +90,21 @@ class AddressBook{
     countContacts() {
         return this.contacts.reduce(count => count + 1, 0);
     }
+    searchByCityOrState(city, state) {
+        return this.contacts.filter(c => c.city === city || c.state === state);
+    }
+    viewByCityOrState() {
+        let cityMap = new Map();
+        let stateMap = new Map();
+
+        this.contacts.forEach(contact => {
+            cityMap.set(contact.city, (cityMap.get(contact.city) || []).concat(contact));
+            stateMap.set(contact.state, (stateMap.get(contact.state) || []).concat(contact));
+        });
+
+        console.log("Persons by City:", cityMap);
+        console.log("Persons by State:", stateMap);
+    }
     displayContacts(){
         console.log("Address Book",this.contacts);
     }
@@ -100,6 +115,9 @@ try{
     let contact1 = new Contact("Raksha", "Malviya", "Piplani", "Bhopal", "Madhya Pradesh", "400001", "9876543210", "rak07@example.com");
     let contact2 = new Contact("Nisha", "Kumari", "Piplani", "Bhopal", "Madhya Pradesh", "400001", "9876543210", "exa7654@example.com");
     let contact3 = new Contact("Raksha", "Malviya", "Piplani", "Bhopal", "Madhya Pradesh", "400001", "9876543210", "rak07@example.com");
+    let contact4 = new Contact("Rak", "Malviya", "Santa lane", "Boston", "Madhya Pradesh", "400001", "9876543210", "ana@example.com");
+
+    
 
     addressBook.addContact(contact1);
     addressBook.addContact(contact2);
@@ -112,6 +130,9 @@ try{
     addressBook.displayContacts();
 
     console.log("Total Contacts:", addressBook.countContacts());
+    addressBook.viewByCityOrState();
+
+
 
 }catch(error){
     console.error(error.message);
