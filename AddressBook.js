@@ -117,6 +117,9 @@ class AddressBook{
         console.log("Count by City:", cityCount);
         console.log("Count by State:", stateCount);
     }
+    sortByName() {
+        this.contacts.sort((a, b) => a.firstName.localeCompare(b.firstName));
+    }
     displayContacts(){
         console.log("Address Book",this.contacts);
     }
@@ -128,6 +131,7 @@ try{
     let contact2 = new Contact("Nisha", "Kumari", "Piplani", "Bhopal", "Madhya Pradesh", "400001", "9876543210", "exa7654@example.com");
     let contact3 = new Contact("Raksha", "Malviya", "Piplani", "Bhopal", "Madhya Pradesh", "400001", "9876543210", "rak07@example.com");
     let contact4 = new Contact("Rak", "Malviya", "Santa lane", "Boston", "Madhya Pradesh", "400001", "9876543210", "ana@example.com");
+    let contact = new Contact("Ashi", "Singh", "Santa lane", "Boston", "Uttar Pradesh", "400001", "9876543210", "ashi@example.com");
 
     
 
@@ -146,7 +150,9 @@ try{
     console.log("Total Contacts:", addressBook.countContacts());
     addressBook.viewByCityOrState();
     addressBook.countByCityOrState();
-
+    //sort contact by name
+    addressBook.sortByName();
+    addressBook.displayContacts();
 
 
 }catch(error){
