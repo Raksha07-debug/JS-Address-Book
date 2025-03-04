@@ -72,7 +72,16 @@ class AddressBook{
             console.error("Update failed:", error.message);
         }
     }
+    deleteContact(firstName) {
+        let initialLength = this.contacts.length;
+        this.contacts = this.contacts.filter(c => c.firstName !== firstName);
 
+        if (this.contacts.length < initialLength) {
+            console.log(`Contact '${firstName}' deleted successfully!`);
+        } else {
+            console.log("Contact not found!");
+        }
+    }
     displayContacts(){
         console.log("Address Book",this.contacts);
     }
@@ -88,6 +97,9 @@ try{
 
     addressBook.displayContacts();
     addressBook.editContact("Raksha", { city: "Amsterdam" });
+
+    addressBook.displayContacts();
+    addressBook.deleteContact("Nisha");
 }catch(error){
     console.error(error.message);
 }
