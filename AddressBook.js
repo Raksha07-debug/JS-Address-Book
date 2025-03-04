@@ -1,15 +1,4 @@
 class Contact {
-    /**
-     * Constructor for Contact class
-     * @param {string} firstName 
-     * @param {string} lastName 
-     * @param {string} address 
-     * @param {string} city 
-     * @param {string} state 
-     * @param {string} zip 
-     * @param {string} phone 
-     * @param {string} email 
-     */
     constructor(firstName, lastName, address, city, state, zip, phone, email) {
         // Regular expressions for validation
         let nameRegex = /^[A-Z][a-zA-Z]{2,}$/;
@@ -115,10 +104,6 @@ class AddressBook {
         }
     }
 
-    /**
-     * Delete a contact from the address book
-     * @param {string} firstName 
-     */
     deleteContact(firstName) {
         // Find the contact to be deleted
         let initialLength = this.contacts.length;
@@ -131,20 +116,12 @@ class AddressBook {
             console.log("Contact not found!");
         }
     }
-
-    /**
-     * Get the total number of contacts in the address book
-     * @returns {number}
-     */
     countContacts() {
         return this.contacts.reduce(count => count + 1, 0);
     }
 
     /**
      * Search for contacts by city or state
-     * @param {string} city 
-     * @param {string} state 
-     * @returns {array}
      */
     searchByCityOrState(city, state) {
         return this.contacts.filter(c => c.city === city || c.state === state);
